@@ -38,12 +38,12 @@ To get our node server up and running, install the `express` module with npm, th
 * Import `express` into your server.js file with a require
 
 ####
-#####Using npm to install node modules
+##### Using npm to install node modules
 Open your terminal, and make sure you have navigated to the root of your project (if you run the `ls` command, you should see `server.js`, `api`, and `public`. When you are there, you can now run the `npm` command to install node modules for your project.
 
 To start out, we want to install `express`. To do that, run `npm install --save express`. This tells npm to install the express library to your project, and save a reference of the express library in your `package.json` file.
 
-#####Import a node module with require
+##### Import a node module with require
 Now that the node module is installed, we need to import it into your server.js file. This will allow us to access and use the library from this file. You can compare this to injecting a service into a controller in Angular. By doing that, the service, and its built-in functions become "available" to the controller. In the same way, if you import a node module into a .js file, it becomes "available" to that file.
 
 Import express into the server.js file like this (it will always go at the top of your file) :
