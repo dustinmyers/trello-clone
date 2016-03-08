@@ -1,0 +1,24 @@
+{
+  "name": "todo",
+  "homepage": "",
+  "authors": [
+    "jasondawson <jason.c.dawson@gmail.com>",
+    "dustinmyers <dustin314@gmail.com>"
+  ],
+  "description": "",
+  "main": "app.js",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-ui-router": "~0.2.15",
+  }
+}

@@ -1,0 +1,20 @@
+<div class="list" ng-mouseenter="handleMouseEnter($event)">
+    <div class="list-header">
+        <span>{{details.name}}</span>
+		<span ng-click="delete(details)">
+		    <i class="fa fa-trash fa-lg"></i>
+		</span>
+    </div>
+    <br />
+    <div class="card-repeat" ng-repeat="card in details.cards">
+        <div class="cardContainer">
+            <card details="card" delete-card="deleteCard(card)" set-drag-card="setDragCard(card)" this-list-id="{{details._id}}"></card>
+			<span ng-click="deleteCard(card)">
+		<i class="fa fa-trash fa-lg"></i>
+		</span>
+        </div>
+    </div>
+
+    <input class="add-card" type="text" placeholder="add card" ng-model="newCard" ng-keyup="handleEnterOnInput($event)">
+
+</div>

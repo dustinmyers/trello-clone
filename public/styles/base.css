@@ -1,0 +1,257 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:700|Exo+2:300,600);
+
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+/* Solarized Palette - http://ethanschoonover.com/solarized ---------
+  lightgray      : #819090;
+  gray           : #708284;
+  mediumgray     : #536870;
+  darkgray       : #475B62;
+  darkblue       : #0A2933;
+  darkerblue     : #042029;
+  paleryellow    : #FCF4DC;
+  paleyellow     : #EAE3CB;
+  yellow         : #A57706;
+  orange         : #BD3613;
+  red            : #D11C24;
+  pink           : #C61C6F;
+  purple         : #595AB7;
+  blue           : #2176C7;
+  cyan           : #259286;
+  green          : #738A05; */
+
+body, html {
+    font-family: "Exo 2", "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    background: #EEEEEE;
+    color: #726F66;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*2F3F43*/
+
+strong {
+    font-weight: 600;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Roboto Slab', "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 700;
+    color: #726F66;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+h4 {
+    display: block;
+    margin-top: 1.33em;
+    margin-bottom: 1.33em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+h5 {
+    display: block;
+    font-size: .83em;
+    margin-top: 1.67em;
+    margin-bottom: 1.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+h6 {
+    display: block;
+    font-size: .67em;
+    margin-top: 2.33em;
+    margin-bottom: 2.33em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+p {
+    margin-bottom: .5em;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top:10px;
+}
+
+@media all and (max-width: 500px) {
+    h2 {
+        padding-left: 10px;
+        text-align: center;
+    }
+    .container {
+        width: 100%;
+    }
+}
+
+#graphic {
+    margin: 0 auto;
+}
+/*end reset*/
+
+/*Project specific styles*/
+header {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #1976D2;
+}
+header h1 {
+    color: white;
+    margin: 20px;
+}
+.auth {
+    margin: 40px auto;
+    height: 40%;
+    width: 80%;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-input {
+    width: 30%;
+    padding: 7px;
+    border: none;
+    border-bottom: 1px dashed #2196F3;
+    display: block;
+    margin-right: 10px;
+    font-size: 16px;
+}
+.login-input:focus {
+    outline: none;
+}
+.login {
+    display: block;
+    position: relative;
+    text-decoration: none;
+    font-weight: 400;
+    text-transform: uppercase;
+    width: 110px;
+    padding: 5px 0;
+    cursor: pointer;
+    text-align: center;
+    color: #2196F3;
+    transition: all 0.2s ease-in-out;
+}
+.login:hover {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.page {
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    background-color: #2196F3;
+}
+.add-list__wrapper {
+    padding: 20px;
+    border: 1px solid lightgrey;
+    background-color: white;
+}
+.add-list {
+    width: 160px;
+    font-size: 16px;
+    padding: 4px;
+}
+.lists {
+    background-color: #f2eaea;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    margin-right: 10px;
+    width: 20%;
+    min-width: 250px;
+    border-radius: 4px;
+}
+.list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.list-header {
+    padding: 5px;
+    font-weight: 600;
+}
+.add-card {
+    margin: 6px auto;
+    font-size: 16px;
+    padding: 4px;
+    width: 80%;
+    background-color: #f2eaea;
+    border: none;
+    outline: none;
+}
+.card-container {
+    width: 95%;
+}
+.card-repeat {
+    width: 80%;
+    position: relative;
+    top: -25px;
+    margin: 10px auto 0 auto;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    padding: 5px;
+}
+.card {
+    z-index: 2;
+    margin: 5px 0;
+    padding: 5px;
+    height: 50px;
+    min-height: 50px;
+    width: 100%;
+    min-width: 158px;
+}
+
+.card.grab {
+     cursor: -webkit-grab;
+ }
+.card.grabbing {
+     cursor: -webkit-grabbing;
+ }
+}

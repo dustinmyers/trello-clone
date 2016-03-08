@@ -1,0 +1,8 @@
+<div class="page">
+    <div class="lists" ng-repeat="list in lists track by $index">
+        <list ng-mouseenter="handleEnterList(list._id, $index)" ng-mouseleave="handleExitList($index)" details="list" delete-list="deleteList(list)" set-dragging="setDragging(card)" is-dragging="isDragging" ng-mouseup="handleMouseUp()"></list>
+    </div>
+    <div class="add-list__wrapper">
+        <input class="add-list" type="text" placeholder="add list" ng-model="newList" ng-keyup="handleEnterOnInput($event)">
+    </div>
+</div>
