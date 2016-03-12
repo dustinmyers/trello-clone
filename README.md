@@ -1,4 +1,4 @@
-# better-todo
+# trello-clone
 
 ```
 npm install
@@ -25,7 +25,28 @@ then
 
 and open in browser: localhost:8000
 
-## Install and require node modules (Day 1)
+
+## Intro / node modules (Day 1)
+
+### Project introduction
+
+####
+In this project, you will be building a full-stack app that will be a clone of trello.com. In order to get started, you will need to clone [THIS](https://github.com/DevMountain/trello-clone) repo. You will automatically be on the `master` branch. This branch is the project solution. You may refer to this code if you need to. For each day, you will need to checkout to a new branch. In the new branches we have removed the code that you will be working on that day, but we have left in the rest of the code for the rest of the project. This will give you the ability to test the app after you finish each day's work. After you finish everything for that day, you will be able to fire up your project and see it in your browser. If it pulls up okay, and everything is working, then you know you finished the day's work correctly. If it doesn't work, then you will some more work to do.
+
+Now, at the start of each new day (section), you will need to checkout to the branch that will be associated to that day. So, to start today's work, open your terminal, and navigate (cd) to the root of this project. If you run `ls`, you should see `server.js`. From there, run this command in your terminal: `git checkout day-one`. Now you are ready start today's work. Each day you will run that same command, but with the new branch for that day (ie. `day-two`, `day-three`, etc.).
+
+Finally, instructions for building this project are in the [Project Guide](http://projectguide.devmounta.in/#/trello-clone). In the project files themselves there will be a few comments and instructions to give you a little bit of a guide, but you will want to follow the instructions in the project guide.
+
+If you have any feedback on the project, or instructions, you can make a change in the project, or on the README.md, then submit a pull request to the DevMountain repository, and we will review those changes. (It will happen a lot faster if you message the link to your pull request to your teacher).
+
+Have fun!
+
+### Project Setup
+
+####
+You will probably notice that the file structure is different than the last project. This setup organizes files by file type. So, in your angular app, you will see that all of the controllers are in one directory, and then the services are in a seperate directory. In the `views` directory, you will see another directory called `partials`. This directory is used for html templates that are used by the directives in this project.
+
+Project organization is determined by the project itself, and then the developers working on the project. You will see different styles of organization used in the programing world, and will probably quickly come to have your own preference for organization.
 
 ### Node Modules
 
@@ -150,7 +171,7 @@ In Postman, make a request to the new endpoint on your server. You will have to 
 ### Build an Angular App and test your server
 ####
 ##### Angular basic structure
-In the file structure, there is a directory called public. This will hold all the files for our Angular app. Inside that directory, build out your angular app. Go ahead and build out the angular structure for all of the files, but for now, we are just going to be working in the authView, authtrl, and the listService. You will need to build the routes for ui-router as well. We will only need an `auth` state, and a `list` state.
+In the file structure, there is a directory called public. This will hold all the files for our Angular app. Inside that directory, build out your angular app. Go ahead and build out the angular structure for all of the files, but for now, we are just going to be working in the authView, authCtrl, and the listService. You will need to build the routes for ui-router as well. We will only need an `auth` state, and a `list` state.
 
 ##### Wire up an $http request
 In the listService, write a $http request that will hit the test endpoint in your server. Build out the service, controller, and view so that you can display the returned string in your browser. There is still one step that we need to complete before this can be successful, so you won't be able to test things yet.
@@ -259,12 +280,12 @@ app.listen(port, function() {
 ####
 If you don't know what trello is, now is a really good time to go to trello.com, sign up for a fee account, and play around with it. We are building a simplified version of trello, so it will help to be a little familiar with how it works.
 
-For our app though, we just want a login page, and a home page where we will have the trello style boards and lists. So, first let's build a login page. You can style this however you want. The only requirements are for you to have a place for the user to type in their username, and then a button that will log them in. Don't worry about having a password field. We will only require a username. For now, don't worry about running the login function all the way to the server. We will get to that part of the process when we learn about databases next. Instead, capture the username in your controller, and then simply route the user to the lists page.
+For our app though, we just want a login page, and a home page where we will have the trello style boards and lists. So, first let's build a login page. You can style this however you want. The only requirements are for you to have a place for the user to type in their username, and then a button that will log them in. Don't worry about having a password field. We will only require a username. In the login process, run a function in your controller that passes the username to your service, then make a request from the service to your server. In your server, console.log the request that came in and return a string with a success message. Finally, route the user to the lists page.
 
 Finally, try to make this page look really nice. Remember, design really counts when it comes to the job hunt!
 
 ####
-In order for your user to log in with their username, you will need an `input` element in your html that is bound to the $scope object with the ngModel directive. You can wrap the `input` tag in an html `form` tag to give you the ability to use ng-submit, which will let you user hit enter to login. You will still need to include the button, as some people will click the button to log in as well. Inside your authCtrl, you will need a login function on the $scope object that, for now, will capture the username, then route the user to the `list` state.
+In order for your user to log in with their username, you will need an `input` element in your html that is bound to the $scope object with the ngModel directive. You can wrap the `input` tag in an html `form` tag to give you the ability to use ng-submit, which will let you user hit enter to login. You will still need to include the button, as some people will click the button to log in as well. Inside your authCtrl, you will need a login function on the $scope object that hits some endpoint on your server, sending the users username. In your server, console.log the reqquest body, and make sure it is going through. Then return some string that says that the login was a success.
 
 ####
 Your code may look something like this:
@@ -277,17 +298,56 @@ Your code may look something like this:
 </form>
 ```
 
+Remember to style this form. The default `<button>` tag is horrific, and definitely needs some help!
+
 ##### authCtrl.js
 ```
-$scope.login = function() {
+$scope.login = function(username) {
     console.log("username: ", username);
-    $state.go('list');
+    authService.login(username).then(function(res) {
+        console.log(res);
+        $state.go('list');
+    };
 };
 ```
 
-Remember to style this form. The default `<button>` tag is horrific, and definitely needs some help!
+##### authService.js
+```
+this.login = funciton(username) {
+   return $http.post(url, {username: username});
+};
+```
+
+##### server.js
+```
+app.post('endpoint', function(req, res) {
+    console.log('**** request body', req.body);
+    res.send("You have succesfully logged in! Best secure login ever!");
+});
+```
 
 ## MongoDB Intro (Day 4)
 
-###
+### Intro to Databases
 
+####
+Now that we have worked on building a Node server, we need to learn how to persist data. We are going to use a database to do that. There are a lot of things that we would want to save in a database. If we look at this project, there are a  few things that we will persist to our database. Username, lists, and cards on each list. We also want to be able to make sure that there is some way to tue cards to their core t list, and lists to the correct user. MongoDB will help us make sure all of those stay correlated correctly, and that our data is stored and ready to be called to the browser.
+
+### CRUD operations
+
+####
+Remember the "verbs" that we have learned about with HTTP communication? GET, POST, PUT, and DELETE? Databases use a very similar system of communication to know what to do when they receive requests from a browser. The commands are different though, and you can remember them with the acronym CRUD - Create, Read, Update, and Delete. Hopefully you see the correlation between the different verbs. It's something like this:
+
+CREATE  -->   POST <br/>
+READ    -->   GET <br/>
+UPDATE  -->   PUT <br/>
+DELETE  -->   DELETE <br/>
+
+So... if you are making a 'GET' request from the browser, your server will receive that request, then it will use 'READ' commands to read, (or "get") data on the database in order to complete that request. Or, if your server receives a 'POST' request, it will run 'CREATE' commands to the database to create, or write, new data onto the database. And so on.
+
+### Build requests to your database
+
+####
+Now we get to put all of our new knowledge into practice! We are going to build out one of each type of request. So, you should be able to run create, read, update, or delete commands within your database. To start off, we need to install and import mongojs in the server.js file. Then define a database instance. You can name the instance "trello-clone", then create a collection called "lists".
+
+In your server.js, you will need to create endpoints that will receive all four types of HTTP requests from the browser. Then, within the callback functions of your endpoints,

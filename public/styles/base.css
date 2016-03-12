@@ -216,6 +216,11 @@ header h1 {
 .list-header {
     padding: 5px;
     font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+}
+.fa-trash {
+    font-size: .8em;
 }
 .add-card {
     margin: 6px auto;
